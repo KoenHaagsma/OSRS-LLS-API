@@ -3,37 +3,28 @@ const router = express.Router();
 const ItemModel = require('../models/itemModel.js')
 const mongoose = require('mongoose');
 
-//Post Method
-router.post('/post', (req, res) => {
-    res.send('Post route')
-});
-
 //Get all Method
-router.get('/getAll', (req, res) => {
-    res.send('get All routes')
-});
+router.get('/getAll', async (req, res) => {
+    try {
+        const items = await ItemModel.find({});
+        res.send(items);
 
-//Update by ID Method
-router.patch('/update/:id', (req, res) => {
-    res.send('Update by ID API');
+    } catch {
+        res.status(404);
+        res.send({ error: "Items not found" })
+    }
 });
 
 //Get by ID Method
 router.get('/getOne/:id', async (req, res) => {
     try {
-        const item = await ItemModel.findOne({ id: parseInt(req.params.id) })
-        console.log(item)
+        const item = await ItemModel.findOne({ id: parseInt(req.params.id) });
         res.send(item);
 
     } catch {
         res.status(404);
         res.send({ error: "Item doesnt exist" })
     }
-});
-
-//Delete by ID Method
-router.delete('/delete/:id', (req, res) => {
-    res.send('Delete by ID API');
 });
 
 module.exports = router;
