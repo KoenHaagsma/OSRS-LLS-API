@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Model = require('../models/imageModel.js');
 const ItemModel = require('../models/itemModel.js')
 const mongoose = require('mongoose');
 const items = require('../osrs-data/items-complete.json')
