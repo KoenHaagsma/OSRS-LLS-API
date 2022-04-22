@@ -23,6 +23,7 @@ router.patch('/update/:id', (req, res) => {
 router.get('/getOne/:id', async (req, res) => {
     try {
         const item = await ItemModel.findOne({ id: parseInt(req.params.id) })
+        console.log(item)
         res.send(item);
 
     } catch {
