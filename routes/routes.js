@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const ItemModel = require('../models/itemModel.js')
 const mongoose = require('mongoose');
-const items = require('../osrs-data/items-complete.json')
 
 //Post Method
 router.post('/post', (req, res) => {
