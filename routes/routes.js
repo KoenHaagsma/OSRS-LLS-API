@@ -12,13 +12,22 @@ router.get('/getAll', async (req, res) => {
         let limit;
         let page;
         let skip;
-        !isNaN(pageNumber)
-            ? (page = parseInt(pageNumber))
-            : res.send({ error: 'The page number search query is not correct, you might wanna take a look there' });
 
-        !isNaN(skipNumber)
-            ? (skip = parseInt(skipNumber))
-            : res.send({ error: 'The skip number search query is not correct, you might wanna take a look there' });
+        if (!isNaN(pageNumber)) {
+            page = parseInt(pageNumber);
+        } else {
+            return res.send({
+                error: 'The page number search query is not correct, you might wanna take a look there',
+            });
+        }
+
+        if (!isNaN(skipNumber)) {
+            skip = parseInt(skipNumber);
+        } else {
+            return res.send({
+                error: 'The skip number search query is not correct, you might wanna take a look there',
+            });
+        }
 
         if (!isNaN(limitNumber)) {
             limit = parseInt(limitNumber);
@@ -26,7 +35,9 @@ router.get('/getAll', async (req, res) => {
                 limit = 1000;
             }
         } else {
-            res.send({ error: 'The limit number search query is not correct, you might wanna take a look there' });
+            return res.send({
+                error: 'The limit number search query is not correct, you might wanna take a look there',
+            });
         }
 
         const items = await ItemModel.find()
@@ -38,10 +49,10 @@ router.get('/getAll', async (req, res) => {
             time: new Date(),
             ...items,
         };
-        res.send(newItems);
+        return res.send(newItems);
     } catch {
         res.status(404);
-        res.send({ error: 'Items not found' });
+        return res.send({ error: 'Items not found' });
     }
 });
 
@@ -52,22 +63,22 @@ router.get('/getOne/:id', async (req, res) => {
             const item = await ItemModel.findOne({ id: parseInt(req.params.id) });
             if (item === null) {
                 res.status(404);
-                res.send({
+                return res.send({
                     error: `The Item you were looking for was '${parseInt(req.params.id)}', it was not found`,
                 });
             }
-            res.send(item);
+            return res.send(item);
         } else {
             const item = await ItemModel.findOne({ name: req.params.id });
             if (item === null) {
                 res.status(404);
-                res.send({ error: `The Item you were looking for was '${req.params.id}', it was not found` });
+                return res.send({ error: `The Item you were looking for was '${req.params.id}', it was not found` });
             }
-            res.send(item);
+            return res.send(item);
         }
     } catch {
         res.status(404);
-        res.send({ error: `The Item you were looking for doesn't exist` });
+        return res.send({ error: `The Item you were looking for doesn't exist` });
     }
 });
 
