@@ -1,48 +1,42 @@
-# ⚙ Project name
+# ⚙ OSRS LLS API
 
-*Insert picture/gif of full project UI*
-## 📂 Assignment
+An up-to-date REST API with all items that are currently in the live game. 
+
+## 📂 Using the API
 *Assignment explanation*
 
-## 🧾 Table of contents
--   [About the project](##About-the-project)
-      * [Built with](###Built-with)
--   [Getting started](##Getting-started)
-      * [Installation](##Installation)
--   [Packages/Dependecies](##Packages/dependecies)
-      * [Dependecies](##Dependecies)
-      * [Dev dependecies](##Dev-dependecies)
--   [License](##License)
+### API endpoints
+- Single item: https://osrsllsapi.herokuapp.com/api/getOne/:name
+- All items (limited per 1000): https://osrsllsapi.herokuapp.com/api/getAll?limit=1000&page=1&skip=0
 
-## 📖 About the project
-*Tell where the project is about*
+### Data format:
 
-## 🛠 Built with
-*Where is the application made with*
-
-## 🔍 Getting started
-*Before you can start you need to follow the installation*
-
-## 🔨 Installation
-1. Open the terminal, or use the terminal in your IDE
-
-2. Clone the repository
+Single item data format (https://osrsllsapi.herokuapp.com/api/getOne/Abyssal%20whip):
 ```
-git clone https://github.com/KoenHaagsma/TechTrack-Frontend-Applications.git
+{
+  "_id": "6262c6a5737f59b8b722b02a",
+  "id": 4151,
+  "name": "Abyssal whip",
+  "last_updated": "2021-08-05",
+  "incomplete": false,
+  "members": true,
+  "tradeable": true,
+  "tradeable_on_ge": true,
+  "stackable": false,
+  "stacked": null,
+  "noted": false,
+  "noteable": true,
+  "linked_id_item": null,
+  "linked_id_noted": 4152,
+  "linked_id_placeholder": 14032,
+  "placeholder": false,
+  "equipable": true,
+  "equipable_by_player": true,
+  "equipable_weapon": true,
+  "cost": 120001,
+  ...
+}
 ```
-3. Go to the cloned repository
-```
-cd ../../Techtrack-Frontend-Applications
-```
-4. Install all packages
-```
-npm install || npm i
-```
-5. Start the application for development
-```
-npm run dev
-```
-6. Open de server and go to the browser: [Localhost](http://localhost:3000/). If this doesn't work change your port to another port
 
 ## 🧰 Packages/dependecies
 
@@ -56,6 +50,3 @@ npm run dev
 
 ## 🔖 License
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)]()
-
-## 👪 Contributers
-*Insert contributers and their role*
