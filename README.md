@@ -114,15 +114,37 @@ all items data format (https://osrsllsapi.herokuapp.com/api/getAll?page=1):
   ...
 ```
 
+## 🔨 Installation
+1. Open the terminal, or use the terminal in your IDE
+
+2. Clone the repository
+```
+git clone https://github.com/KoenHaagsma/OSRS-LLS-API.git
+```
+3. Go to the cloned repository
+```
+cd OSRS-LLS-API
+```
+4. Install all packages
+```
+npm install || npm i
+```
+5. Start the application for development
+```
+npm run dev
+```
+6. Open de server and go to the browser: [Localhost:4242](http://localhost:4242). If this doesn't work change your port to another portbottom: 'Go live'
+
 ## 🧰 Packages/dependecies
 
 ### 🧱 Dependecies
-- [Package name]()
-### 🧱 Dev dependecies
-- [Package name]()
+- [cors](https://www.npmjs.com/package/cors)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [express](https://www.npmjs.com/package/express)
+- [mongoose](https://www.npmjs.com/package/mongoose)
 
-## 📑 Sources
-- [Bronnen]()
+### 🧱 Dev dependecies
+- [nodemon](https://www.npmjs.com/package/nodemon)
 
 ## 🔖 License
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)]()
